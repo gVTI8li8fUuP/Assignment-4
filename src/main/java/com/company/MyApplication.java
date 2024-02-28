@@ -1,6 +1,5 @@
 package com.company;
-
-import com.company.controllers.UserController;
+import controllers.UserController;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
