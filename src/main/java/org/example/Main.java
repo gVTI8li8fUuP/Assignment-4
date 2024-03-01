@@ -5,10 +5,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
+import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
 
@@ -25,6 +31,28 @@ public class Main {
             System.out.println("Ошибка подключения к PostgreSQL");
             e.printStackTrace();
         }
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpPost httpPost = new HttpPost("http://localhost:8080/users/add");
+
+
+            httpPost.setHeader("Content-Type", "application/json");
+
+
+            String json = "{\"name\":\"John\",\"surname\":\"Doe\",\"gender\":true}";
+
+
+            StringEntity entity = new StringEntity(json, ContentType.APPLICATION_JSON);
+            httpPost.setEntity(entity);
+
+
+            try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+
+                System.out.println(response.getStatusLine().getStatusCode());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     @Component
     public class MyComponent {
@@ -70,5 +98,14 @@ public class Main {
         }
     }
 
+
+
+    @SpringBootApplication
+    public class UserApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(UserApplication.class, args);
+        }
+    }
 
 }

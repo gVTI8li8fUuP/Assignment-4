@@ -1,11 +1,13 @@
-package org.example;
+package org.example.Entities;
+
+import org.example.Main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DailyQuoteApplication {
+public class UserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DailyQuoteApplication.class, args);
+        SpringApplication.run(Main.UserApplication.class, args);
     }
 }

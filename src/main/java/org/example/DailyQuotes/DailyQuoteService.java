@@ -1,4 +1,4 @@
-package Service;
+package org.example.DailyQuotes;
 
 import org.springframework.stereotype.Service;
 import java.util.Random;
