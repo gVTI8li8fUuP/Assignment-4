@@ -23,9 +23,9 @@ public class UserController {
         return usersService.getAllUsers();
     }
 
-    @PostMapping("/add")
-    public HttpStatus addUser(@RequestBody Users user) {
-        usersService.addUser(user);
+    @GetMapping("/add")
+    public HttpStatus addUser(@RequestBody String user) {
+//        usersService.addUser(user);
         return HttpStatus.CREATED;
     }
 }

@@ -1,10 +1,9 @@
 package org.example.DailyQuotes;
 
+import org.example.Entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -13,7 +12,11 @@ public class DailyQuoteController {
 
     @Autowired
     private DailyQuoteService dailyQuoteService;
-
+//    @GetMapping("/addQuote")
+//    public void addQuote(@RequestBody String user) {
+////        DailyQuoteService.addQuote(user);
+////        return HttpStatus.CREATED;
+//    }
     @GetMapping("/{mood}")
     public String getDailyQuote(@PathVariable String mood) {
         return "<html><head><title>Daily Quote Service</title></head><body>"

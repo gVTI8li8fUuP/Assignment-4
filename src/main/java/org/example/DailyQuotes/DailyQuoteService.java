@@ -1,5 +1,6 @@
 package org.example.DailyQuotes;
 
+import org.example.Entities.Users;
 import org.springframework.stereotype.Service;
 import java.util.Random;
 
@@ -33,6 +34,9 @@ public class DailyQuoteService {
             "The best way to cheer yourself up is to try to cheer somebody else up. - Mark Twain",
             "The most wasted of all days is one without laughter. - E.E. Cummings"
     };
+
+    public static void addQuote(Users user) {
+    }
 
     public String getRandomQuote(String mood) {
         Random rand = new Random();
