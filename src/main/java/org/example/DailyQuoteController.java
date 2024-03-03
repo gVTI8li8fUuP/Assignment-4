@@ -58,5 +58,10 @@ public class DailyQuoteController {
                 + "<p>" + dailyQuoteService.getRandomQuote(mood) + "</p>"
                 + "</body></html>";
     }
+    @DeleteMapping("/users/delete/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

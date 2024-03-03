@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
         newUser.setId(id); // Assuming newUser has an setId() method
         return userRepository.save(newUser);
     }
+
+    @Override
+    public void deleteUser(Long id) {
+
+    }
 }
