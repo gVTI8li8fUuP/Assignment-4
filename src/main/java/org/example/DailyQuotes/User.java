@@ -1,4 +1,4 @@
-package org.example.Entities;
+package org.example.DailyQuotes;
 
 import jakarta.persistence.*;
 import lombok.Data;

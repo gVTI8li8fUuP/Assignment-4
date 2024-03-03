@@ -1,5 +1,6 @@
-package org.example.Entities;
+package org.example.DailyQuotes;
 
+import org.example.DailyQuotes.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

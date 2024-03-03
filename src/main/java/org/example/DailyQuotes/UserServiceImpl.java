@@ -1,5 +1,8 @@
-package org.example.Entities;
+package org.example.DailyQuotes;
 
+import org.example.DailyQuotes.User;
+import org.example.DailyQuotes.UserRepository;
+import org.example.DailyQuotes.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

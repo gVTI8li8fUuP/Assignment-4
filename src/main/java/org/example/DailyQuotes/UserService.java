@@ -1,4 +1,6 @@
-package org.example.Entities;
+package org.example.DailyQuotes;
+
+import org.example.DailyQuotes.User;
 
 import java.util.List;
 
