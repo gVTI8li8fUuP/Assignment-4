@@ -1,4 +1,4 @@
-package org.example.DailyQuotes;
+package org.example;
 
 import jakarta.persistence.*;
 import lombok.Data;

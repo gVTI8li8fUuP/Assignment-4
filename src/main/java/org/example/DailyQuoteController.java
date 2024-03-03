@@ -1,4 +1,4 @@
-package org.example.DailyQuotes;
+package org.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/Daily")
 public class DailyQuoteController {
+
+    private final UserService userService;
+    private final DailyQuoteService dailyQuoteService;
 
     @Autowired
     public DailyQuoteController(UserService userService, DailyQuoteService dailyQuoteService) {
