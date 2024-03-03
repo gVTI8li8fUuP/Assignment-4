@@ -2,30 +2,49 @@ package org.example.Entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
+    private final UserService userService;
 
     @Autowired
-    private UserService usersService;
-
-    @GetMapping("/all")
-    public List<Users> getAllUsers() {
-        return usersService.getAllUsers();
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/add")
-    public HttpStatus addUser(@RequestBody String user) {
-//        usersService.addUser(user);
-        return HttpStatus.CREATED;
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        User newUser = userService.addUser(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User newUser) {
+        User updatedUser = userService.updateUser(id, newUser);
+        if (updatedUser != null) {
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
